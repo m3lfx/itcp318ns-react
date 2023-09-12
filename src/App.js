@@ -4,6 +4,7 @@ import Footer from './Footer';
 import Nav from './Nav';
 import Create from './Create';
 import axios from 'axios'
+import Title from './Title';
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -24,13 +25,12 @@ function App() {
 
   return (
     <div className="container pb-5">
-      <Nav />
+       <Nav />
+       <Title title="welcome to my blog" />
       {posts.map((post, i) => (
         <div class="container">
-        <div class="row">
-          <div class="col-sm">
-            One of three columns
-          </div>
+       
+         
           <div class="col-sm">
           {post.title}
           </div>
@@ -41,7 +41,7 @@ function App() {
           {post.content}
           </div>
         </div>
-      </div>
+    
       ))}
 
       <Footer />
