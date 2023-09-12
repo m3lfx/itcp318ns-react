@@ -30,7 +30,7 @@ function App() {
       <Nav />
       <Title title="welcome to my blog" user="john" />
       {posts.map((post, i) => (
-        <PostList />
+        <PostList post={post} />
 
       ))}
 
