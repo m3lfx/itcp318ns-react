@@ -17,7 +17,7 @@ const Create = () => {
     };
     return (
         <div className="container p-5">
-          <Title title="create a new post"/>
+          <Title title="create a new post" user="wick"/>
             <br />
             <form>
                 <div className="form-group">

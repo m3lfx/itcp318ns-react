@@ -5,6 +5,8 @@ import Nav from './Nav';
 import Create from './Create';
 import axios from 'axios'
 import Title from './Title';
+import { Card } from '@mui/material';
+import { PostList } from './PostList';
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -25,23 +27,11 @@ function App() {
 
   return (
     <div className="container pb-5">
-       <Nav />
-       <Title title="welcome to my blog" />
+      <Nav />
+      <Title title="welcome to my blog" user="john" />
       {posts.map((post, i) => (
-        <div class="container">
-       
-         
-          <div class="col-sm">
-          {post.title}
-          </div>
-          <div class="col-sm">
-          {post.slug}
-          </div>
-          <div class="col-sm">
-          {post.content}
-          </div>
-        </div>
-    
+        <PostList />
+
       ))}
 
       <Footer />
