@@ -7,7 +7,7 @@ import Nav from './Nav';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <RoutedApp>
-        <Nav />
+       
         <App />
     </RoutedApp>
 );
