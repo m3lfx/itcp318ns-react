@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Box from '@mui/material/Box';
+import { Container } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -27,6 +27,12 @@ export const PostList = ({ post }) => {
             <CardActions>
                 <Button size="small">read More</Button>
             </CardActions>
+            <Container>
+                <Link to={`/post/update/${post.id}`} >
+                    <Button variant="contained" >edit</Button>
+                </Link>
+                <Button variant="contained" color="error">Delete</Button>
+            </Container>
         </Card>
     );
 

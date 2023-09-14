@@ -11,11 +11,11 @@ const UpdatePost = () => {
         user: ''
     });
     const { title, content, user } = state;
-    let { slug } = useParams()
+    let { id } = useParams()
     let navigate = useNavigate();
     useEffect(() => {
         axios
-            .get(`${process.env.REACT_APP_API}/post/${slug}`)
+            .get(`${process.env.REACT_APP_API}/posts/${id}`)
             .then(response => {
                 const { title, content, slug, user } = response.data;
                 setState({ ...state, title, content, slug, user });
@@ -33,7 +33,7 @@ const UpdatePost = () => {
         event.preventDefault();
         // console.table({ title, content, user });
         axios
-            .put(`${process.env.REACT_APP_API}/post/${slug}`, { title, content, user })
+            .put(`${process.env.REACT_APP_API}/posts/${id}`, { title, content, user })
             .then(response => {
                 console.log(response);
                 const { title, content, slug, user } = response.data;
