@@ -28,9 +28,9 @@ function App() {
   return (
     <div className="container pb-5">
       <Nav />
-      <Title title="welcome to my blog" user="john" />
+      <Title title="welcome to my blog" />
       {posts.map((post, i) => (
-        <PostList post={post} />
+        <PostList post={post} key={post.id} />
 
       ))}
 
