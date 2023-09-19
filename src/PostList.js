@@ -13,7 +13,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import axios from 'axios';
 
-export const PostList = ({ post }) => {
+export const PostList = ({ post, fetchPosts }) => {
     const [open, setOpen] = useState(false);
     const handleClickOpen = () => {
         setOpen(true);
@@ -37,7 +37,9 @@ export const PostList = ({ post }) => {
             .delete(`${process.env.REACT_APP_API}/posts/${id}`)
             .then(response => {
                 // alert(response.data.status);
-                fetchPosts();
+                fetchPosts()
+                // navigate('/')
+                
             })
             .catch(error => alert('Error deleting post'));
     };

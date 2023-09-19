@@ -5,7 +5,7 @@ import Nav from './Nav';
 import Create from './Create';
 import axios from 'axios'
 import Title from './Title';
-import { Card } from '@mui/material';
+import { Card, Container, Typography } from '@mui/material';
 import { PostList } from './PostList';
 
 function App() {
@@ -29,10 +29,15 @@ function App() {
     <div className="container pb-5">
       <Nav />
       <Title title="welcome to my blog" />
-      {posts.map((post, i) => (
-        <PostList post={post} key={post.id} />
+      {posts.length > 0 ? posts.map((post, i) => (
+        <PostList post={post} key={post.id} fetchPosts={fetchPosts} />
 
-      ))}
+      )) : <Container
+        direction="column"
+        alignItems="center"
+       >
+        <Typography>No posts yet</Typography>
+      </Container>}
 
       <Footer />
     </div>
