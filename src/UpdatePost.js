@@ -8,20 +8,23 @@ const UpdatePost = () => {
         title: '',
         content: '',
         slug: '',
-        user: ''
+        user: {},
+        userId: 0,
+
     });
-    const { title, content, user } = state;
+    const { title, content, user, userId } = state;
     let { id } = useParams()
     let navigate = useNavigate();
     useEffect(() => {
         axios
-            .get(`${process.env.REACT_APP_API}/posts/${id}`)
+            .get(`${process.env.REACT_APP_API}/posts/${id}/edit`)
             .then(response => {
-                const { title, content, slug, user } = response.data;
-                setState({ ...state, title, content, slug, user });
+                const { title, content, slug, user, user_id } = response.data;
+                setState({ ...state, title, content, slug, user, userId: user_id });
             })
             .catch(error => alert('Error loading single post'));
     }, []);
+    // console.log(state.userId)
 
     // onchange event handler
     const handleChange = name => event => {
@@ -33,7 +36,7 @@ const UpdatePost = () => {
         event.preventDefault();
         // console.table({ title, content, user });
         axios
-            .put(`${process.env.REACT_APP_API}/posts/${id}`, { title, content, user })
+            .put(`${process.env.REACT_APP_API}/posts/${id}`, { title, content, user, userId })
             .then(response => {
                 console.log(response);
                 const { title, content, slug, user } = response.data;
@@ -77,7 +80,7 @@ const UpdatePost = () => {
                 <label className="text-muted">User</label>
                 <input
                     onChange={handleChange('user')}
-                    value={user}
+                    value={user.name}
                     type="text"
                     className="form-control"
                     placeholder="Your name"
