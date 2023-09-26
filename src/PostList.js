@@ -44,29 +44,7 @@ export const PostList = ({ post, fetchPosts }) => {
             .catch(error => alert('Error deleting post'));
     };
 
-    const dialog = () => {
-        <Dialog
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-        >
-            <DialogTitle id="alert-dialog-title">
-                delete this post?
-            </DialogTitle>
-            <DialogContent>
-                <DialogContentText id="alert-dialog-description">
-                    delete this post?
-                </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-                <Button onClick={handleClose}>No</Button>
-                <Button onClick={handleClose} autoFocus>
-                    Yes
-                </Button>
-            </DialogActions>
-        </Dialog>
-    }
+    
     return (
         <Card sx={{ minWidth: 275 }}>
             <CardContent>

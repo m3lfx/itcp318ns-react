@@ -2,12 +2,14 @@ import React, { useState } from 'react'
 import { useNavigate} from 'react-router-dom';
 import Title from './Title';
 import axios from 'axios';
+import Nav from './Nav';
 
 const Create = () => {
     const [state, setState] = useState({
         title: '',
         content: '',
-        user: ''
+        user: '',
+        userId: '',
     });
     const navigate = useNavigate()
 
@@ -21,7 +23,7 @@ const Create = () => {
     const handleSubmit = event => {
         event.preventDefault();
         // console.table({ title, content, user });
-        axios.post(`http://localhost:4000/api/posts`, { title, content, user }).then(response => {
+        axios.post(`${process.env.REACT_APP_API}/posts`, { title, content, user }).then(response => {
                 console.log(response);
                 setState({ ...state, title: '', content: '', user: '' });
                 // show sucess alert
@@ -34,6 +36,8 @@ const Create = () => {
             });
     };
     return (
+        <>
+        <Nav />
         <div className="container p-5">
             <Title title="create a new post" user="wick" />
             <br />
@@ -75,6 +79,7 @@ const Create = () => {
                 </div>
             </form>
         </div>
+        </>
     )
 }
 

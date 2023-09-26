@@ -29,7 +29,7 @@ const SinglePost = () => {
     let { id } = useParams();
     console.log(id);
     const fetchPost = () => {
-        axios.get(`http://localhost:4000/api/posts/${id}`)
+        axios.get(`${process.env.REACT_APP_API}/posts/${id}`)
             .then(response => {
                 console.log(response.data);
                 setPost(response.data);

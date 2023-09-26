@@ -10,9 +10,14 @@ import { PostList } from './PostList';
 
 function App() {
   const [posts, setPosts] = useState([]);
+  // const config = {
+  //   headers: {
+  //     authorization: `Bearer ${getToken()}`
+  //   }
+  // }
   const fetchPosts = () => {
     axios
-      .get(`http://localhost:4000/api/posts`)
+      .get(`${process.env.REACT_APP_API}/posts`)
       .then(response => {
         console.log(response);
         setPosts(response.data);
@@ -24,6 +29,7 @@ function App() {
   useEffect(() => {
     fetchPosts();
   }, []);
+  console.log(posts)
 
   return (
     <div className="container pb-5">
@@ -35,7 +41,7 @@ function App() {
       )) : <Container
         direction="column"
         alignItems="center"
-       >
+      >
         <Typography>No posts yet</Typography>
       </Container>}
 
