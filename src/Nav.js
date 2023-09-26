@@ -146,19 +146,14 @@ const Nav = () => {
                                 component={Link} to="/"
                             >Home
                             </Button>
-                            {/* { getUser() && <Button
+                            { getUser() && <Button
                                 onClick={handleCloseNavMenu}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
                                 component={Link} to="/create"
                             >Create
-                            </Button>} */}
-                            <Button
-                                onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
-                                component={Link} to="/create"
-                            >Create
-                            </Button>
-                            {/* { getUser() ? <Button
+                            </Button>}
+                           
+                            { getUser() ? <Button
                                 sx={{ my: 2, color: 'white', display: 'block' }}
                                 onClick={() => logout(() => navigate('/'))}
                             >Logout
@@ -166,12 +161,8 @@ const Nav = () => {
                                 sx={{ my: 2, color: 'white', display: 'block' }}
                                 onClick={handleClickOpen}
                             >Login
-                            </Button>} */}
-                            <Button
-                                sx={{ my: 2, color: 'white', display: 'block' }}
-                                onClick={handleClickOpen}
-                            >Login
-                            </Button>
+                            </Button>}
+                           
 
                         </Box>
 
