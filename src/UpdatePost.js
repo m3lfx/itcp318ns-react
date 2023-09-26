@@ -2,8 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Nav from './Nav';
+import { getToken } from './helpers';
 
 const UpdatePost = () => {
+    const config = {
+        headers: {
+            authorization: `Bearer ${getToken()}`
+        }
+    }
     const [state, setState] = useState({
         title: '',
         content: '',
@@ -16,8 +22,9 @@ const UpdatePost = () => {
     let { id } = useParams()
     let navigate = useNavigate();
     useEffect(() => {
+        
         axios
-            .get(`${process.env.REACT_APP_API}/posts/${id}/edit`)
+            .get(`${process.env.REACT_APP_API}/posts/${id}/edit`, config)
             .then(response => {
                 const { title, content, slug, user, user_id } = response.data;
                 setState({ ...state, title, content, slug, user, userId: user_id });
@@ -36,7 +43,7 @@ const UpdatePost = () => {
         event.preventDefault();
         // console.table({ title, content, user });
         axios
-            .put(`${process.env.REACT_APP_API}/posts/${id}`, { title, content, user, userId })
+            .put(`${process.env.REACT_APP_API}/posts/${id}`, { title, content, user, userId }, config)
             .then(response => {
                 console.log(response);
                 const { title, content, slug, user } = response.data;

@@ -9,6 +9,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 import axios from 'axios'
 import Nav from './Nav';
+import { getToken } from './helpers';
 
 const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
@@ -29,7 +30,12 @@ const SinglePost = () => {
     let { id } = useParams();
     console.log(id);
     const fetchPost = () => {
-        axios.get(`${process.env.REACT_APP_API}/posts/${id}`)
+        const config = {
+            headers: {
+                authorization: `Bearer ${getToken()}`
+            }
+        }
+        axios.get(`${process.env.REACT_APP_API}/posts/${id}`, config)
             .then(response => {
                 console.log(response.data);
                 setPost(response.data);

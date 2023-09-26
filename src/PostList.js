@@ -12,6 +12,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import axios from 'axios';
+import { getToken } from './helpers';
 
 export const PostList = ({ post, fetchPosts }) => {
     const [open, setOpen] = useState(false);
@@ -33,8 +34,13 @@ export const PostList = ({ post, fetchPosts }) => {
 
     const deletePost = id => {
         // console.log('delete', slug, ' post');
+        const config = {
+            headers: {
+              authorization: `Bearer ${getToken()}`
+            }
+          }
         axios
-            .delete(`${process.env.REACT_APP_API}/posts/${id}`)
+            .delete(`${process.env.REACT_APP_API}/posts/${id}`, config)
             .then(response => {
                 // alert(response.data.status);
                 fetchPosts()
